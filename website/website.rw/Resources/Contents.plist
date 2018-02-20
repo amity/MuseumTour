@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Creator</key>
+	<string></string>
+	<key>SandwichFillings</key>
+	<array>
+		<dict>
+			<key>Dictionary</key>
+			<dict/>
+			<key>Files</key>
+			<array/>
+			<key>Subsandwiches</key>
+			<array>
+				<string>1A49F49E-D770-479E-9B0C-653207B590D7</string>
+				<string>28254C5A-625A-4C1A-8AD5-9CCBEEFE32D4</string>
+				<string>38D63801-95CC-4B13-AC29-616D6997ACAE</string>
+				<string>AA2210BA-6026-44DF-BAB4-21435A359F3A</string>
+				<string>B7EB7354-2AE3-4A8E-A624-6B2F6DFB57C3</string>
+			</array>
+		</dict>
+	</array>
+	<key>Type</key>
+	<string>Resources</string>
+</dict>
+</plist>

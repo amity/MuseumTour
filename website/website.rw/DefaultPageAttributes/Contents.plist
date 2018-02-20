@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Creator</key>
+	<string></string>
+	<key>SandwichFillings</key>
+	<array>
+		<dict>
+			<key>Dictionary</key>
+			<dict>
+				<key>ColourStyles</key>
+				<dict>
+					<key>Affero</key>
+					<dict/>
+					<key>Kiki</key>
+					<dict/>
+					<key>Lander</key>
+					<dict>
+						<key>%colour_body_background%</key>
+						<string>#232323</string>
+						<key>%colour_content_text%</key>
+						<string>#E2E2E2</string>
+						<key>%colour_footer_text%</key>
+						<string>#5B5B5B</string>
+						<key>%colour_header_title%</key>
+						<string>#FFFFFF</string>
+						<key>%colour_highlight%</key>
+						<string>#FFFFFF</string>
+						<key>%colour_links%</key>
+						<string>#C4EBFF</string>
+						<key>%colour_nav_background%</key>
+						<string>#272727</string>
+						<key>%colour_page_background%</key>
+						<string>#3F3F3F</string>
+						<key>%colour_sidebar_background%</key>
+						<string>#2D2D2D</string>
+					</dict>
+					<key>Offroad</key>
+					<dict/>
+					<key>Reason</key>
+					<dict/>
+					<key>Tesla</key>
+					<dict/>
+				</dict>
+				<key>CreditRapidWeaver</key>
+				<true/>
+				<key>DefaultLinkTarget</key>
+				<string></string>
+				<key>FilenameExtension</key>
+				<string>html</string>
+				<key>HasCustomThemeStyle</key>
+				<false/>
+				<key>ImageFormat</key>
+				<string>Original</string>
+				<key>ImageQuality</key>
+				<string>High</string>
+				<key>IndexFilename</key>
+				<string></string>
+				<key>OutputFormat</key>
+				<string>Default</string>
+				<key>OutputXMLDeclaration</key>
+				<false/>
+				<key>RobotsShouldFollowLinks</key>
+				<true/>
+				<key>RobotsShouldIndexPage</key>
+				<true/>
+				<key>SidebarEnabled</key>
+				<integer>1</integer>
+				<key>TextEncoding</key>
+				<string>utf-8</string>
+				<key>ThemeStyles</key>
+				<dict>
+					<key>Affero</key>
+					<array>
+						<string>Body Font.Helvetica (default)</string>
+						<string>Title Font.Source Code (default)</string>
+						<string>Toggles.Content Accent</string>
+						<string>Toggles.Featured Image</string>
+						<string>Toggles.Hide Last Update</string>
+					</array>
+					<key>Dark Glass</key>
+					<array>
+						<string>Sidebar.Right</string>
+					</array>
+					<key>Kiki</key>
+					<array>
+						<string>Font Family.Joseph</string>
+						<string>Font Size.Normal</string>
+						<string>Sidebar.Hidden</string>
+						<string>Site Banner Overlay.Red overlay</string>
+						<string>Toggle Site Banner.Display Banner</string>
+					</array>
+					<key>Lander</key>
+					<array>
+						<string>[+] combo options.Back to Top Button</string>
+						<string>[+] combo options.Navigation: Uppercase</string>
+						<string>[+] combo options.Title and Slogan: Dark Shadow</string>
+						<string>Banner Image - Parallax.Apply Parallax (disable in small devices)</string>
+						<string>Banner Image - Vertical masking.MaxHeight 500px</string>
+						<string>BreakPoint: Sidebar.  900 Pixel</string>
+						<string>Google WebFont: Classes + Titles.Bree Serif</string>
+						<string>Image - Parallax.Apply Parallax (disable in small devices)</string>
+						<string>Image - vertical masking.MaxHeight 400px</string>
+						<string>Loading page - Effects.Fade In</string>
+						<string>Max Width.1000 Pixel</string>
+						<string>Navigation Colors.Navigation - Link</string>
+					</array>
+					<key>Offroad</key>
+					<array>
+						<string>Background overlay.80% opacity</string>
+						<string>Background.Use background image</string>
+						<string>Blur background on scroll.Blur</string>
+						<string>Desktop navigation.Main colour</string>
+						<string>Global colours.Main</string>
+						<string>Photo album.Show captions</string>
+						<string>Sidebar.Right</string>
+						<string>Site description.Visible</string>
+						<string>Site title.Show site title</string>
+					</array>
+					<key>Reason</key>
+					<array>
+						<string>Background.Wood</string>
+						<string>Banner Height.400px</string>
+						<string>Banner Image.Banner 1</string>
+						<string>Header Opacity.0.4</string>
+						<string>Max Width.1000px</string>
+						<string>Navigation Opacity.0.4</string>
+						<string>Sidebar Position.Bottom</string>
+						<string>Text Size.Medium</string>
+					</array>
+					<key>Tesla</key>
+					<array>
+						<string>Banner Background.Banner 7</string>
+						<string>Maximum Content Width.960 px</string>
+						<string>Sidebar.Hidden</string>
+					</array>
+				</dict>
+			</dict>
+			<key>Files</key>
+			<array/>
+			<key>Subsandwiches</key>
+			<array/>
+		</dict>
+	</array>
+	<key>Type</key>
+	<string>Page Attributes</string>
+</dict>
+</plist>

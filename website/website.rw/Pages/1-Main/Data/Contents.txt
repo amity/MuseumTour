@@ -1,0 +1,13 @@
+# The Project:
+
+Currently, there are many methods that museums employ to give contextual information to their visitors. A few examples include guided tours, free loans of mp3 players loaded with audio information, and physical paper pamphlets. The goal of this project is to create an alternative way to access this information that is intuitive to use, and requires no human resources, waste, or additional hardware outside of smartphones. We hope to accomplish this by creating a mobile application that will pinpoint an individual’s location inside a museum. As the user moves from room to room, the app will automatically display a virtual map of the user’s location, as well as interesting information about the artifacts in the room.  Standard GPS tracking is often not precise enough indoors, so this project utilizes Bluetooth beacons placed strategically around the building to find a user’s location. We will gather the Bluetooth signal strengths with the client side app, then feed the data into a pre-existing API called “RoomKit”, which uses neural-network learning to classify a user’s room based on the Bluetooth data collected. To demonstrate the functionality of our app, we will create a walking tour of Sudikoff to emulate real-life usage. In order to present up-to-date data regardless of app version, we will utilize Firebase to store all the museum room data.
+
+# Team:
+> Nate Neuman, Andrew Laub, John Kotz
+
+# The Product:
+[![Build Status](https://travis-ci.com/johnlev/CS65-RoomKit.svg?branch=master)](https://travis-ci.com/johnlev/CS65-RoomKit)
+
+The current release APK can be found here: [Release APK](https://github.com/johnlev/CS65-RoomKit)
+
+You can find the bleeding edge code on [Github](https://github.com/johnlev/CS65-RoomKit)

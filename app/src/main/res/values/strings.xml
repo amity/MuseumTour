@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">MuseumTour</string>
 
+    <string name="get_started_title1">So what are we</string>
+    <string name="get_started_title2">waiting for...</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

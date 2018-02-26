@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import java.lang.reflect.Array;
 import java.util.List;
@@ -17,9 +18,11 @@ import java.util.List;
 public class IntroductionPagerAdapter extends PagerAdapter {
 
     private Context mContext;
+    private View.OnClickListener onClickListener;
 
-    public IntroductionPagerAdapter(Context context) {
+    public IntroductionPagerAdapter(Context context, View.OnClickListener onClickListener) {
         mContext = context;
+        this.onClickListener = onClickListener;
     }
 
     @Override
@@ -40,6 +43,10 @@ public class IntroductionPagerAdapter extends PagerAdapter {
 
         ViewGroup layout = (ViewGroup) inflater.inflate(id, container, false);
         container.addView(layout);
+        if (position == 2) {
+            LinearLayout button = (LinearLayout) layout.findViewById(R.id.getStartedButton);
+            button.setOnClickListener(this.onClickListener);
+        }
         return layout;
     }
 

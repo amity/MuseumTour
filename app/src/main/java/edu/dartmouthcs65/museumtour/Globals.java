@@ -18,6 +18,10 @@ public abstract class Globals {
     // Tolerance for color matching
     public static final int COLOR_TOLERANCE = 20;
 
+    // Intro completed key
+    public static final String INTRO_COMPLETED_KEY = "intro_completed";
+    public static final String SHARED_PREF = "museum_tour_shared_preferences";
+
 
 
 }

@@ -1,5 +1,6 @@
 package edu.dartmouthcs65.museumtour;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -7,6 +8,7 @@ import android.app.FragmentTransaction;
 import android.os.Bundle;
 
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -36,8 +38,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        myActBr = (Toolbar) findViewById(R.id.main_toolbar);
-        setSupportActionBar(myActBr);
+//        myActBr = (Toolbar) findViewById(R.id.main_toolbar);
+//        setSupportActionBar(myActBr);
 
         //Create main map fragment
         mainMap = new MainMapFragment();
@@ -46,8 +48,8 @@ public class MainActivity extends AppCompatActivity {
         mainFM = getFragmentManager();
 
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-        dRef = FirebaseDatabase.getInstance().getReference();
         firebaseDatabase.setPersistenceEnabled(true);
+        dRef = FirebaseDatabase.getInstance().getReference();
 
         dRef.child("kemeny").addChildEventListener(new ChildEventListener() {
             @Override
@@ -70,9 +72,19 @@ public class MainActivity extends AppCompatActivity {
             public void onCancelled(DatabaseError databaseError) {}
         });
 
+
         FragmentTransaction initialTrans = mainFM.beginTransaction();
         initialTrans.replace(R.id.main_fragment, mainMap);
         initialTrans.commit();
 
+        Boolean hasCompletedIntro = getSharedPreferences(Globals.SHARED_PREF, 0)
+                .getBoolean(Globals.INTRO_COMPLETED_KEY, false);
+        // If user has not seen intro, show it
+        Log.d("hasCompletedIntro", hasCompletedIntro ? "YES": "NO");
+        if (!hasCompletedIntro) {
+            Intent introIntent = new Intent(this, IntroductionActivity.class);
+            startActivity(introIntent);
+        }
     }
+
 }

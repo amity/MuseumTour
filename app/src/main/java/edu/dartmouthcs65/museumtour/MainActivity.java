@@ -10,7 +10,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MotionEvent;
 import android.view.View;
 
-public class MainActivity extends AppCompatActivity implements View.OnTouchListener {
+public class MainActivity extends AppCompatActivity {
 
     // Action bar
     Toolbar myActBr;
@@ -42,29 +42,4 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         initialTrans.commit();
 
     }
-
-
-    public boolean onTouch(View myView, MotionEvent myME) {
-
-        /* IN PROGRESS -- Andrew
-        // On down touch, ensure hitbox image is brought to front.
-        // On up touch, test color of hit location. If color matches hitbox of a room, select that
-        // room.
-
-        // Get x and y click location
-        final int xCoord = (int) myME.getX();
-        final int yCoord = (int) myME.getY();
-
-        // get the motion event action, and test if up or down press
-        final int meAction = myME.getAction();
-        if (meAction == MotionEvent.ACTION_DOWN){
-
-        } else if (meAction == MotionEvent.ACTION_UP) {
-
-        }
-        */
-
-        return true;
-    }
-
 }

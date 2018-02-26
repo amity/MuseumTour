@@ -17,14 +17,14 @@ public class DetailView extends AppCompatActivity {
         setContentView(R.layout.activity_detail_view);
         int workId = getIntent().getIntExtra(workIdKey, 0);
 
-        // TODO: Setup directory + getting work from directory.
-        WorkDisplayed workDisplayed = null;
-//        WorkDisplayed workDisplayed = getWork(workId);
-
-        // Update: will be using Firebase. Irrelevant for now.
-
-        ImageView detailImage = findViewById(R.id.detailImage);
-        detailImage.setImageResource(workDisplayed.photoId);
+//        // TODO: Setup directory + getting work from directory.
+//        WorkDisplayed workDisplayed = null;
+////        WorkDisplayed workDisplayed = getWork(workId);
+//
+//        // Update: will be using Firebase. Irrelevant for now.
+//
+//        ImageView detailImage = findViewById(R.id.detailImage);
+//        detailImage.setImageResource(workDisplayed.photoId);a
 
         TextView headerText = findViewById(R.id.detailHeader);
 

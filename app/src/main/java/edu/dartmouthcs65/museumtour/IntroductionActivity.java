@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import java.sql.Time;
+
 import me.relex.circleindicator.CircleIndicator;
 
 
@@ -19,16 +21,17 @@ public class IntroductionActivity extends AppCompatActivity implements View.OnCl
         setContentView(R.layout.activity_introduction);
         viewPager = (ViewPager) findViewById(R.id.viewPager);
         CircleIndicator indicator = (CircleIndicator) findViewById(R.id.indicator);
-        viewPager.setAdapter(new IntroductionPagerAdapter(this));
+        viewPager.setAdapter(new IntroductionPagerAdapter(this, this));
         indicator.setViewPager(viewPager);
-
-        LinearLayout button = (LinearLayout) findViewById(R.id.getStartedButton);
-        button.setOnClickListener(this);
     }
 
     @Override
+    public void onBackPressed() {}
+
+    @Override
     public void onClick(View view) {
-        getPreferences(0).edit().putBoolean("intro_completed", true).apply();
+        getSharedPreferences(Globals.SHARED_PREF, 0).edit()
+                .putBoolean(Globals.INTRO_COMPLETED_KEY, true).apply();
         finish();
     }
 }

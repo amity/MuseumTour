@@ -20,6 +20,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import io.fabric.sdk.android.Fabric;
+import com.google.firebase.storage.FirebaseStorage;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,6 +36,9 @@ public class MainActivity extends AppCompatActivity {
     FragmentManager mainFM;
 
     DatabaseReference dRef;
+
+    public static FirebaseStorage storage;
+    ArrayList<MuseumRoom> rooms;
 
 
     @Override
@@ -53,13 +59,24 @@ public class MainActivity extends AppCompatActivity {
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         firebaseDatabase.setPersistenceEnabled(true);
         dRef = FirebaseDatabase.getInstance().getReference();
+        storage = FirebaseStorage.getInstance();
+        rooms = new ArrayList<MuseumRoom>();
 
-        dRef.child("kemeny").addChildEventListener(new ChildEventListener() {
+        dRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-
-                // Update to load on startup
-
+                for (DataSnapshot room: dataSnapshot.getChildren()) {
+                    ArrayList<WorkDisplayed> roomWorks = new ArrayList<>();
+                    for (DataSnapshot work : room.getChildren()){
+                        roomWorks.add(new WorkDisplayed(work.getKey(),
+                                (String) work.child("artist").getValue(),
+                                        (String) work.child("year").getValue(),
+                                        (String) work.child("description").getValue(),
+                                        (String) work.child("photoURL").getValue()));
+                    }
+                    rooms.add(new MuseumRoom(room.getKey(), roomWorks));
+                    roomWorks.clear();
+                }
             }
 
             @Override

@@ -12,6 +12,7 @@ import android.os.Bundle;
 
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.widget.Toast;
 
 
 import com.crashlytics.android.Crashlytics;
@@ -21,10 +22,12 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import edu.dartmouthcs65.museumtour.RoomKit.BeaconTracker;
+import edu.dartmouthcs65.museumtour.RoomKit.Classifier;
 import edu.dartmouthcs65.museumtour.RoomKit.RoomKit;
 import io.fabric.sdk.android.Fabric;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements Classifier.Listener {
 
     // Action bar
     Toolbar myActBr;
@@ -96,12 +99,25 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        RoomKit.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (RoomKit.onRequestPermissionsResult(requestCode, permissions, grantResults)) {
+            // Handled
+        }else{
+            // Not handled
+        }
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         RoomKit.checkPermissions(this);
+        BeaconTracker tracker = BeaconTracker.getInstance(this);
+        tracker.setOnClassifyListener(this);
+        tracker.setRangeFrequency(60); // Hz
+        tracker.start();
+    }
+
+    @Override
+    public void onClassify(Integer roomIndex, String room) {
+        Toast.makeText(this, "CLASSIFIED ROOM: " + room, Toast.LENGTH_SHORT);
     }
 }

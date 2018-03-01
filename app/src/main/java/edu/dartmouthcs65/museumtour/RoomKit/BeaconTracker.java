@@ -8,6 +8,11 @@ import android.os.IBinder;
 import android.os.RemoteException;
 import android.support.annotation.Nullable;
 import android.util.Log;
+import android.util.Pair;
+
+import com.google.gson.Gson;
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.JsonHttpResponseHandler;
 
 import org.altbeacon.beacon.Beacon;
 import org.altbeacon.beacon.BeaconConsumer;
@@ -16,6 +21,8 @@ import org.altbeacon.beacon.BeaconParser;
 import org.altbeacon.beacon.Identifier;
 import org.altbeacon.beacon.RangeNotifier;
 import org.altbeacon.beacon.Region;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -23,8 +30,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import cz.msebera.android.httpclient.Header;
+import cz.msebera.android.httpclient.entity.ContentType;
+import cz.msebera.android.httpclient.entity.StringEntity;
 
-public class BeaconTracker implements BeaconConsumer, RangeNotifier {
+
+public class BeaconTracker extends JsonHttpResponseHandler implements BeaconConsumer, RangeNotifier {
     private static String IBEACON_LAYOUT = "m:0-3=4c000215,i:4-19,i:20-21,i:22-23,p:24-24";
     private static String MAP_ID = "5a96f0692616a30009a23ea4";
     private static String UUID = "B113B38F-8502-4DDF-B466-3F687EF15867";
@@ -33,6 +44,7 @@ public class BeaconTracker implements BeaconConsumer, RangeNotifier {
     private Context mContext;
     private Classifier.Listener listener;
     private List<List<Beacon>> last5 = new ArrayList<>();
+    private ServiceConnection serviceConnection;
 
     private BeaconTracker(Context context) {
         manager = BeaconManager.getInstanceForApplication(context);
@@ -50,7 +62,8 @@ public class BeaconTracker implements BeaconConsumer, RangeNotifier {
 
     public void start() {
         if (RoomKit.getInstance().permissionsGranted) {
-            manager.bind(this);
+            if (serviceConnection == null)
+                manager.bind(this);
         }else{
             RoomKit.getInstance().beaconTracker = this;
         }
@@ -81,7 +94,6 @@ public class BeaconTracker implements BeaconConsumer, RangeNotifier {
 
     @Override
     public void didRangeBeaconsInRegion(Collection<Beacon> collection, Region region) {
-        Log.d("RoomKit", "did range!");
         List<Beacon> list = new ArrayList<>();
         for (Beacon beacon : collection) {
             String uuid = beacon.getId1().toString();
@@ -92,32 +104,78 @@ public class BeaconTracker implements BeaconConsumer, RangeNotifier {
 
         last5.add(list);
 
-        if (last5.size() > 5) {
-            Map<String, Integer> counts = new HashMap<>();
-            Map<String, Double> averages = new HashMap<>();
+        if (last5.size() > 20) {
+            Map<Pair<Integer, Integer>, Integer> counts = new HashMap<>();
+            Map<Pair<Integer, Integer>, Integer> averages = new HashMap<>();
 
             for (List<Beacon> beacons : last5) {
                 for (Beacon beacon : beacons) {
-                    String string = beacon.getId2().toString() + beacon.getId3().toString();
-                    if (!counts.containsKey(string)) {
-                        counts.put(string, 1);
-                        averages.put(string, beacon.getDistance());
+                    Integer rssi = Math.abs(beacon.getRssi());
+                    Pair<Integer, Integer> pair = Pair.create(beacon.getId2().toInt(), beacon.getId3().toInt());
+                    if (!counts.containsKey(pair)) {
+                        counts.put(pair, 1);
+                        averages.put(pair, rssi);
                     } else {
-                        int count = counts.get(string) + 1;
-                        averages.put(string, beacon.getDistance() * 1 / (count) + averages.get(string) * (count - 1) / count);
-                        counts.put(string, count);
+                        int count = counts.get(pair) + 1;
+                        averages.put(pair, rssi / count + averages.get(pair) * (count - 1) / count);
+                        counts.put(pair, count);
                     }
                 }
             }
             last5 = new ArrayList<>();
 
-            new Classifier(listener).classifiy(averages, MAP_ID);
+            classifiy(averages);
+        }
+    }
+
+    public void classifiy(Map<Pair<Integer, Integer>, Integer> beacons) {
+        AsyncHttpClient client = new AsyncHttpClient();
+
+        List<Map<String, Object>> data = new ArrayList<>();
+        for (Pair<Integer, Integer> pair : beacons.keySet()) {
+            int major = pair.first;
+            int minor = pair.second;
+            Integer strength = beacons.get(pair);
+            Map<String, Object> map = new HashMap<>();
+            map.put("major", major);
+            map.put("minor", minor);
+            map.put("strength", strength);
+
+            data.add(map);
+        }
+        Gson gson = new Gson();
+        String string = gson.toJson(data);
+        StringEntity entity = null;
+        try {
+            entity = new StringEntity(string, ContentType.APPLICATION_JSON);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return;
+        }
+        client.addHeader("authorization", "29ece557ad5f54dc1b813d56d53e7ac60dc7da1417734079b0");
+
+        client.post(mContext, "https://roomkit.herokuapp.com/maps/" + MAP_ID, entity, "application/json", this);
+    }
+
+    @Override
+    public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+        try {
+            int roomIndex = (Integer) response.get("roomIndex");
+            String room = (String) response.get("room");
+            listener.onClassify(roomIndex, room);
+        } catch (JSONException exp) {
+
         }
     }
 
     @Override
     public boolean bindService(Intent intent, ServiceConnection serviceConnection, int i) {
+        if (this.serviceConnection != null) {
+            return false;
+        }
+
         mContext.bindService(intent, serviceConnection, i);
+        this.serviceConnection = serviceConnection;
         return true;
     }
 

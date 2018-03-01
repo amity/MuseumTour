@@ -118,6 +118,7 @@ public class MainActivity extends AppCompatActivity implements Classifier.Listen
 
     @Override
     public void onClassify(Integer roomIndex, String room) {
-        Toast.makeText(this, "CLASSIFIED ROOM: " + room, Toast.LENGTH_SHORT);
+        Log.d("classify", room);
+        Toast.makeText(this, "CLASSIFIED ROOM: " + room, Toast.LENGTH_SHORT).show();
     }
 }

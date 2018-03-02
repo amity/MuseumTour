@@ -22,6 +22,4 @@ public abstract class Globals {
     public static final String INTRO_COMPLETED_KEY = "intro_completed";
     public static final String SHARED_PREF = "museum_tour_shared_preferences";
 
-
-
 }

@@ -22,9 +22,14 @@ import com.google.firebase.database.FirebaseDatabase;
 import io.fabric.sdk.android.Fabric;
 import com.google.firebase.storage.FirebaseStorage;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
+
+    public static final String WORK_KEY = "WORK_KEY";
+    public static final String IS_ART_KEY = "ART_OR_EXHIBIT";
 
     // Action bar
     Toolbar myActBr;
@@ -38,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
     DatabaseReference dRef;
 
     public static FirebaseStorage storage;
-    ArrayList<MuseumRoom> rooms;
+    MuseumRoom[] rooms;
 
 
     @Override
@@ -57,26 +62,35 @@ public class MainActivity extends AppCompatActivity {
         mainFM = getFragmentManager();
 
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-        firebaseDatabase.setPersistenceEnabled(true);
+        firebaseDatabase.setPersistenceEnabled(false);
         dRef = FirebaseDatabase.getInstance().getReference();
         storage = FirebaseStorage.getInstance();
-        rooms = new ArrayList<MuseumRoom>();
 
         dRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                for (DataSnapshot room: dataSnapshot.getChildren()) {
-                    ArrayList<WorkDisplayed> roomWorks = new ArrayList<>();
-                    for (DataSnapshot work : room.getChildren()){
-                        roomWorks.add(new WorkDisplayed(work.getKey(),
-                                (String) work.child("artist").getValue(),
-                                        (String) work.child("year").getValue(),
-                                        (String) work.child("description").getValue(),
-                                        (String) work.child("photoURL").getValue()));
-                    }
-                    rooms.add(new MuseumRoom(room.getKey(), roomWorks));
-                    roomWorks.clear();
-                }
+//                // Includes index because you need a zero for null room
+//                rooms = new MuseumRoom[(int) dataSnapshot.getChildrenCount()];
+//                for (DataSnapshot room: dataSnapshot.getChildren()) {
+//                    Log.d("ROOMNAME: ", room.getKey());
+//                    WorkDisplayed[] roomWorks = new WorkDisplayed[(int) room.getChildrenCount()];
+//                    roomWorks[0] = null;
+//                    for (DataSnapshot work : room.getChildren()){
+//                        if (!Objects.equals(work.getKey(), "index") && ){
+//                            roomWorks[Math.toIntExact((long) work.child("Index").getValue())] =
+//                                    new WorkDisplayed(work.getKey(),
+//                                            (String) work.child("artist").getValue(),
+//                                            (String) work.child("year").getValue(),
+//                                            (String) work.child("description").getValue(),
+//                                            (String) work.child("photoURL").getValue());
+//                            Log.d("WORKNAME: ", work.getKey());
+//                        }
+//                    }
+//
+//                    Long roomIndex = (Long) room.child("index").getValue();
+//                    Integer indexRoom = Math.toIntExact(roomIndex);
+//                    rooms[indexRoom] =  new MuseumRoom(room.getKey(), roomWorks);
+//                }
             }
 
             @Override

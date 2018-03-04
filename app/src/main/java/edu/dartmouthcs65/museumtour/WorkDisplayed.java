@@ -3,14 +3,13 @@ package edu.dartmouthcs65.museumtour;
 
 import com.google.firebase.storage.StorageReference;
 
+import java.io.Serializable;
+
 /**
  * Created by Nate on 2/25/2018.
  */
 
-public class WorkDisplayed {
-
-    // WiP: Will probably scrap, as we've implemented Firebase database.
-
+public class WorkDisplayed implements Serializable {
 
     public String name;
 
@@ -38,5 +37,4 @@ public class WorkDisplayed {
             photoRef = MainActivity.storage.getReferenceFromUrl(photoURL);
         }
     }
-
 }

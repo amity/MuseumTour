@@ -3,9 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/CS65-RoomKit.iml" filepath="$PROJECT_DIR$/.idea/CS65-RoomKit.iml" />
-      <module fileurl="file://C:\Users\Nate\AndroidStudioProjects\CS65-RoomKit\CS65-RoomKit\CS65-RoomKit.iml" filepath="C:\Users\Nate\AndroidStudioProjects\CS65-RoomKit\CS65-RoomKit\CS65-RoomKit.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://C:\Users\Nate\AndroidStudioProjects\CS65-RoomKit\CS65-RoomKit\final.iml" filepath="C:\Users\Nate\AndroidStudioProjects\CS65-RoomKit\CS65-RoomKit\final.iml" />
     </modules>
   </component>
 </project>

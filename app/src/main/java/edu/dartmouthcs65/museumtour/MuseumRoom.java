@@ -3,6 +3,7 @@ package edu.dartmouthcs65.museumtour;
 import android.util.Log;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -19,12 +20,9 @@ public class MuseumRoom {
 
     public MuseumRoom(){}
 
-    public MuseumRoom(String name, ArrayList<WorkDisplayed> works){
+    public MuseumRoom(String name, WorkDisplayed[] works){
         roomName = name;
         roomWorks = new ArrayList<>();
-        roomWorks.addAll(works);
-        for (WorkDisplayed work: roomWorks) {
-            Log.d(roomName, work.name);
-        }
+        Collections.addAll(roomWorks, works);
     }
 }

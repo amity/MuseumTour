@@ -1,6 +1,7 @@
 package edu.dartmouthcs65.museumtour;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.net.Uri;
@@ -14,6 +15,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.firebase.ui.storage.images.FirebaseImageLoader;
+import com.google.firebase.storage.StorageReference;
+
 
 public class MainMapFragment extends Fragment implements View.OnTouchListener{
     // Index of the room pressed on the DOWN touch. Will be compared to room index
@@ -21,7 +26,8 @@ public class MainMapFragment extends Fragment implements View.OnTouchListener{
     private int lastRoomIndex;
 
     // Room image Views
-    View rm0View, rm1View, rm2View, rm3View;
+    ImageView rm0View, rm1View, rm2View, rm3View, rmHitView;
+    StorageReference rm0Ref, rm1Ref, rm2Ref, rm3Ref, rmHitRef;
 
     public MainMapFragment() {
         // Empty constructor
@@ -38,16 +44,54 @@ public class MainMapFragment extends Fragment implements View.OnTouchListener{
         mainMapView.setOnTouchListener(this);
 
         // Get room image views
-        rm0View = mainMapView.findViewById(R.id.rm_0_img);
-        rm1View = mainMapView.findViewById(R.id.rm_1_img);
-        rm2View = mainMapView.findViewById(R.id.rm_2_img);
-        rm3View = mainMapView.findViewById(R.id.rm_3_img);
+        rm0View = (ImageView) mainMapView.findViewById(R.id.rm_0_img);
+        rm1View = (ImageView) mainMapView.findViewById(R.id.rm_1_img);
+        rm2View = (ImageView) mainMapView.findViewById(R.id.rm_2_img);
+        rm3View = (ImageView) mainMapView.findViewById(R.id.rm_3_img);
+        rmHitView = (ImageView) mainMapView.findViewById(R.id.hitboxes);
 
         // Set transparancy of all rooms to 0, except null room
-        rm0View.setAlpha(1);
-        rm1View.setAlpha(0);
-        rm2View.setAlpha(0);
-        rm3View.setAlpha(0);
+        rm0View.setImageAlpha(255);
+        rm1View.setImageAlpha(0);
+        rm2View.setImageAlpha(0);
+        rm3View.setImageAlpha(0);
+
+
+        // Set floorplan and hitbox from firebase images
+        rm0Ref = MainActivity.storage.getReferenceFromUrl("gs://cs65-museumtour.appspot.com/MainMapImgs/0.png");
+        rm1Ref = MainActivity.storage.getReferenceFromUrl("gs://cs65-museumtour.appspot.com/MainMapImgs/1.png");
+        rm2Ref = MainActivity.storage.getReferenceFromUrl("gs://cs65-museumtour.appspot.com/MainMapImgs/2.png");
+        rm3Ref = MainActivity.storage.getReferenceFromUrl("gs://cs65-museumtour.appspot.com/MainMapImgs/3.png");
+        rmHitRef = MainActivity.storage.getReferenceFromUrl("gs://cs65-museumtour.appspot.com/MainMapImgs/hitbox.png");
+
+
+
+        Glide.with(this)
+                .using(new FirebaseImageLoader())
+                .load(rm0Ref)
+                .dontAnimate()
+                .into(rm0View);
+        Glide.with(this)
+                .using(new FirebaseImageLoader())
+                .load(rm1Ref)
+                .dontAnimate()
+                .into(rm1View);
+        Glide.with(this)
+                .using(new FirebaseImageLoader())
+                .load(rm2Ref)
+                .dontAnimate()
+                .into(rm2View);
+        Glide.with(this)
+                .using(new FirebaseImageLoader())
+                .load(rm3Ref)
+                .dontAnimate()
+                .into(rm3View);
+        Glide.with(this)
+                .using(new FirebaseImageLoader())
+                .load(rmHitRef)
+                .dontAnimate()
+                .into(rmHitView);
+
 
 
 
@@ -68,7 +112,7 @@ public class MainMapFragment extends Fragment implements View.OnTouchListener{
             Bitmap hitboxBM = Bitmap.createBitmap(hitboxImg.getDrawingCache());
             if (hitboxBM != null) {
                 // find index of room touched
-                roomIndex = HeatMap.FindItemClicked(myME, hitboxBM, Globals.ROOM_COLOR);
+                roomIndex = Hitbox.FindItemClicked(myME, hitboxBM, Globals.ROOM_COLOR);
             } else return false;
         }
 
@@ -86,25 +130,34 @@ public class MainMapFragment extends Fragment implements View.OnTouchListener{
 
                 // Set all transparancy to zero. Then, switch transparency of selected room
                 // to 100
-                rm0View.setAlpha(0);
-                rm1View.setAlpha(0);
-                rm2View.setAlpha(0);
-                rm3View.setAlpha(0);
+                rm0View.setImageAlpha(0);
+                rm1View.setImageAlpha(0);
+                rm2View.setImageAlpha(0);
+                rm3View.setImageAlpha(0);
 
                 // TODO: Make this switch statement launch the room activity (or fragment,
                 // TODO: depending on impplementation) before changing map UI
                 switch (lastRoomIndex) {
                     case 0:
-                        rm0View.setAlpha(1);
+                        rm0View.setImageAlpha(255);
                         break;
                     case 1:
-                        rm1View.setAlpha(1);
+                        Intent rm1Intent = new Intent(getActivity(), RoomView.class);
+                        rm1Intent.putExtra(Globals.ROOM_NUM_KEY, 1);
+                        startActivity(rm1Intent);
+                        rm1View.setImageAlpha(255);
                         break;
                     case 2:
-                        rm2View.setAlpha(1);
+                        Intent rm2Intent = new Intent(getActivity(), RoomView.class);
+                        rm2Intent.putExtra(Globals.ROOM_NUM_KEY, 2);
+                        startActivity(rm2Intent);
+                        rm2View.setImageAlpha(255);
                         break;
                     case 3:
-                        rm3View.setAlpha(1);
+                        Intent rm3Intent = new Intent(getActivity(), RoomView.class);
+                        rm3Intent.putExtra(Globals.ROOM_NUM_KEY, 3);
+                        startActivity(rm3Intent);
+                        rm3View.setImageAlpha(255);
                         break;
                 }
             }

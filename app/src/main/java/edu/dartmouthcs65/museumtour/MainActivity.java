@@ -50,6 +50,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Fabric.with(this, new Crashlytics());
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        firebaseDatabase.setPersistenceEnabled(false);
+        dRef = FirebaseDatabase.getInstance().getReference();
+        storage = FirebaseStorage.getInstance();
         setContentView(R.layout.activity_main);
 
 //        myActBr = (Toolbar) findViewById(R.id.main_toolbar);
@@ -60,11 +64,6 @@ public class MainActivity extends AppCompatActivity {
 
         // Instantiate fragment manager
         mainFM = getFragmentManager();
-
-        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-        firebaseDatabase.setPersistenceEnabled(false);
-        dRef = FirebaseDatabase.getInstance().getReference();
-        storage = FirebaseStorage.getInstance();
 
         dRef.addChildEventListener(new ChildEventListener() {
             @Override

@@ -6,4 +6,18 @@
     android:layout_height="match_parent"
     tools:context="edu.dartmouthcs65.museumtour.RoomView">
 
+    <ImageView
+        android:id="@+id/rmImg"
+        android:src="@drawable/error"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop" />
+    <ImageView
+        android:id="@+id/rmHitbox"
+        android:src="@drawable/error"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:visibility="invisible"/>
+
 </android.support.constraint.ConstraintLayout>

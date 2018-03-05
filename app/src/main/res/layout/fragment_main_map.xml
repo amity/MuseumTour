@@ -11,28 +11,28 @@
         android:id="@+id/rm_0_img"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/rm_0_selected_v1"
+        android:src="@drawable/error"
         android:scaleType="centerCrop"/>
 
     <ImageView
         android:id="@+id/rm_1_img"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/rm_1_selected_v1"
+        android:src="@drawable/error"
         android:scaleType="centerCrop"/>
 
     <ImageView
         android:id="@+id/rm_2_img"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/rm_2_selected_v1"
+        android:src="@drawable/error"
         android:scaleType="centerCrop"/>
 
     <ImageView
         android:id="@+id/rm_3_img"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/rm_3_selected_v1"
+        android:src="@drawable/error"
         android:scaleType="centerCrop"/>
 
 
@@ -40,7 +40,7 @@
         android:id="@+id/hitboxes"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/hitbox_img_v3"
+        android:src="@drawable/error"
         android:scaleType="centerCrop"
         android:visibility="invisible"
         />

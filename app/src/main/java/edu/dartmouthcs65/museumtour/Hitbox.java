@@ -8,7 +8,7 @@ import android.view.MotionEvent;
  * Created by laub on 3/2/18.
  */
 
-public class HeatMap {
+public class Hitbox {
 
 
     // A function that helps determine what a user has tapped.

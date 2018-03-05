@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements Classifier.Listen
     Toolbar myActBr;
 
     //Fragments
-    Fragment mainMap;
+    MainMapFragment mainMap;
 
     //Fragment manager
     FragmentManager mainFM;
@@ -142,13 +142,12 @@ public class MainActivity extends AppCompatActivity implements Classifier.Listen
         RoomKit.checkPermissions(this);
         BeaconTracker tracker = BeaconTracker.getInstance(this);
         tracker.setOnClassifyListener(this);
-        tracker.setRangeFrequency(60); // Hz
         tracker.start();
     }
 
     @Override
     public void onClassify(Integer roomIndex, String room) {
         Log.d("classify", room);
-        Toast.makeText(this, "CLASSIFIED ROOM: " + room, Toast.LENGTH_SHORT).show();
+        mainMap.onClassify(roomIndex, room);
     }
 }

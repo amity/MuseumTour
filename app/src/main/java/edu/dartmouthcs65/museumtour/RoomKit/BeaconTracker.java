@@ -45,11 +45,12 @@ public class BeaconTracker extends JsonHttpResponseHandler implements BeaconCons
     private Classifier.Listener listener;
     private List<List<Beacon>> last5 = new ArrayList<>();
     private ServiceConnection serviceConnection;
+    private List<Pair<Integer, String>> classificationBuffer = new ArrayList<>();
 
     private BeaconTracker(Context context) {
         manager = BeaconManager.getInstanceForApplication(context);
         manager.getBeaconParsers().add(new BeaconParser().setBeaconLayout(IBEACON_LAYOUT));
-        manager.setForegroundScanPeriod(16);
+        manager.setForegroundScanPeriod(300);
         mContext = context;
     }
 
@@ -104,20 +105,20 @@ public class BeaconTracker extends JsonHttpResponseHandler implements BeaconCons
 
         last5.add(list);
 
-        if (last5.size() > 20) {
+        if (last5.size() > 5) {
             Map<Pair<Integer, Integer>, Integer> counts = new HashMap<>();
-            Map<Pair<Integer, Integer>, Integer> averages = new HashMap<>();
+            Map<Pair<Integer, Integer>, Double> averages = new HashMap<>();
 
             for (List<Beacon> beacons : last5) {
                 for (Beacon beacon : beacons) {
-                    Integer rssi = Math.abs(beacon.getRssi());
+                    Double distance = beacon.getDistance();
                     Pair<Integer, Integer> pair = Pair.create(beacon.getId2().toInt(), beacon.getId3().toInt());
                     if (!counts.containsKey(pair)) {
                         counts.put(pair, 1);
-                        averages.put(pair, rssi);
+                        averages.put(pair, distance);
                     } else {
                         int count = counts.get(pair) + 1;
-                        averages.put(pair, rssi / count + averages.get(pair) * (count - 1) / count);
+                        averages.put(pair, distance / count + averages.get(pair) * (count - 1) / count);
                         counts.put(pair, count);
                     }
                 }
@@ -128,14 +129,14 @@ public class BeaconTracker extends JsonHttpResponseHandler implements BeaconCons
         }
     }
 
-    public void classifiy(Map<Pair<Integer, Integer>, Integer> beacons) {
+    public void classifiy(Map<Pair<Integer, Integer>, Double> beacons) {
         AsyncHttpClient client = new AsyncHttpClient();
 
         List<Map<String, Object>> data = new ArrayList<>();
         for (Pair<Integer, Integer> pair : beacons.keySet()) {
             int major = pair.first;
             int minor = pair.second;
-            Integer strength = beacons.get(pair);
+            Double strength = beacons.get(pair);
             Map<String, Object> map = new HashMap<>();
             map.put("major", major);
             map.put("minor", minor);
@@ -145,6 +146,7 @@ public class BeaconTracker extends JsonHttpResponseHandler implements BeaconCons
         }
         Gson gson = new Gson();
         String string = gson.toJson(data);
+        Log.d("posting with", string);
         StringEntity entity = null;
         try {
             entity = new StringEntity(string, ContentType.APPLICATION_JSON);
@@ -153,6 +155,7 @@ public class BeaconTracker extends JsonHttpResponseHandler implements BeaconCons
             return;
         }
         client.addHeader("authorization", "29ece557ad5f54dc1b813d56d53e7ac60dc7da1417734079b0");
+        client.addHeader("client_os", "android");
 
         client.post(mContext, "https://roomkit.herokuapp.com/maps/" + MAP_ID, entity, "application/json", this);
     }
@@ -162,10 +165,42 @@ public class BeaconTracker extends JsonHttpResponseHandler implements BeaconCons
         try {
             int roomIndex = (Integer) response.get("roomIndex");
             String room = (String) response.get("room");
-            listener.onClassify(roomIndex, room);
+            Pair<Integer, String> pair = Pair.create(roomIndex, room);
+            classificationBuffer.add(pair);
+            if (classificationBuffer.size() > 5) {
+                Pair<Integer, String> bestGuess = null;
+                Integer max = 3;
+                Map<Pair<Integer, String>, Integer> dict = new HashMap<>();
+
+                for (Pair<Integer, String> guess : classificationBuffer) {
+                    if (dict.get(guess) == null) {
+                        dict.put(guess, 1);
+                    }else{
+                        dict.put(guess, dict.get(guess) + 1);
+                    }
+                }
+
+                for (Pair<Integer, String> guess : dict.keySet()) {
+                    if (((int) dict.get(guess)) > max) {
+                        bestGuess = guess;
+                        max = ((int) dict.get(guess));
+                    }
+                }
+                classificationBuffer.remove(0);
+
+                if (bestGuess != null) {
+                    listener.onClassify(bestGuess.first, bestGuess.second);
+                }
+            }
         } catch (JSONException exp) {
 
         }
+    }
+
+    @Override
+    public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+        Log.d("classify failure", Integer.toString(statusCode));
+        Log.d("classify failure", responseString);
     }
 
     @Override

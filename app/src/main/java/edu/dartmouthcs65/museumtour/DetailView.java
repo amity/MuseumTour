@@ -11,23 +11,33 @@ public class DetailView extends AppCompatActivity {
     public String workIdKey = "workId";
     // IN PROGRESS: Nate
 
+    //TODO: set up different view for nat. hist. (artist-classification)
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_view);
-        int workId = getIntent().getIntExtra(workIdKey, 0);
 
-//        // TODO: Setup directory + getting work from directory.
-//        WorkDisplayed workDisplayed = null;
-////        WorkDisplayed workDisplayed = getWork(workId);
-//
-//        // Update: will be using Firebase. Irrelevant for now.
-//
-//        ImageView detailImage = findViewById(R.id.detailImage);
-//        detailImage.setImageResource(workDisplayed.photoId);a
+        WorkDisplayed work = (WorkDisplayed) getIntent().
+                getSerializableExtra(MainActivity.WORK_KEY);
+        boolean isArt = getIntent().getBooleanExtra(MainActivity.IS_ART_KEY, true);
 
-        TextView headerText = findViewById(R.id.detailHeader);
+        TextView header = findViewById(R.id.detailHeader);
+        if (isArt){
+            header.setText(work.name
+                    + "\nArtist: " + work.artist
+                    + "\nYear: " + work.year);
+        } else{
+            header.setText(work.name
+                    + "\nScientific Name: " + work.artist
+                    + "\nTime Period: " + work.year);
+        }
 
+        TextView description = findViewById(R.id.detailDescription);
+        description.setText(work.description);
+
+        ImageView imageView = findViewById(R.id.detailImage);
+        imageView.setImageResource(R.drawable.art);
 
     }
 }

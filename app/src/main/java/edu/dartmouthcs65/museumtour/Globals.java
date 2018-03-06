@@ -10,7 +10,7 @@ public abstract class Globals {
     // 0, can be found at index zero of ROOM_COLOR
 
     // Labels/names of the rooms
-    public static final String[] ROOM_NAMES = {"No Room Selected", "Vincent Van Gogh Exhibit", "Natural History Exhibit", "Modern Art Exhibit"};
+    public static final String[] ROOM_NAMES = {"No Room Selected", "Vincent Van Gogh Exhibit", "Modern Art Exhibit", "Natural History Exhibit"};
 
     // Color associated with the room on the heatmap. Int converted from figma hex value
     public static final int[] ROOM_COLOR = {3815331, 2201171, 10179040, 15423319};

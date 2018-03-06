@@ -17,12 +17,14 @@ public class MuseumRoom {
 
     public ArrayList<WorkDisplayed> roomWorks;
     public String roomName;
+    public boolean isArt;
 
     public MuseumRoom(){}
 
-    public MuseumRoom(String name, WorkDisplayed[] works){
+    public MuseumRoom(String name, WorkDisplayed[] works, boolean artBool){
         roomName = name;
         roomWorks = new ArrayList<>();
         Collections.addAll(roomWorks, works);
+        isArt = artBool;
     }
 }

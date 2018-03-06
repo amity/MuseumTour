@@ -77,10 +77,11 @@ public class MainActivity extends AppCompatActivity implements Classifier.Listen
                 // Includes index because you need a zero for null room
                 rooms = new MuseumRoom[(int) dataSnapshot.getChildrenCount() + 1];
                 for (DataSnapshot room: dataSnapshot.getChildren()) {
-                    WorkDisplayed[] roomWorks = new WorkDisplayed[(int) room.getChildrenCount()];
+                    WorkDisplayed[] roomWorks = new WorkDisplayed[(int) room.getChildrenCount() - 1];
                     roomWorks[0] = null;
                     for (DataSnapshot work : room.getChildren()){
-                        if (!Objects.equals(work.getKey(), "index")){
+                        if (!Objects.equals(work.getKey(), "index") &&
+                                !Objects.equals(work.getKey(), "art")){
                             roomWorks[Math.toIntExact((long) work.child("index").getValue())] =
                                     new WorkDisplayed(work.getKey(),
                                             (String) work.child("artist").getValue(),
@@ -92,7 +93,8 @@ public class MainActivity extends AppCompatActivity implements Classifier.Listen
                     }
                     Long roomIndex = (Long) room.child("index").getValue();
                     Integer indexRoom = Math.toIntExact(roomIndex);
-                    rooms[indexRoom] =  new MuseumRoom(room.getKey(), roomWorks);
+                    Boolean isArt = (Boolean) room.child("art").getValue();
+                    rooms[indexRoom] =  new MuseumRoom(room.getKey(), roomWorks, isArt);
                 }
             }
 
@@ -145,6 +147,8 @@ public class MainActivity extends AppCompatActivity implements Classifier.Listen
 
     @Override
     public void onClassify(Integer roomIndex, String room) {
-        mainMap.onClassify(roomIndex, room);
+        if (roomIndex != null && room != null) {
+            mainMap.onClassify(roomIndex, room);
+        }
     }
 }

@@ -27,6 +27,8 @@ public class WorkDisplayed implements Serializable {
 
     public int hitboxColor;
 
+    public String URL;
+
 
     public WorkDisplayed(){}
 
@@ -40,9 +42,6 @@ public class WorkDisplayed implements Serializable {
         year = workYear;
         description = workDescrip;
         hitboxColor = Color.parseColor(color);
-
-        if (photoURL != null){
-            photoRef = MainActivity.storage.getReferenceFromUrl(photoURL);
-        }
+        URL = photoURL;
     }
 }

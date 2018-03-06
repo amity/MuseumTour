@@ -114,9 +114,7 @@ public class RoomView extends AppCompatActivity implements View.OnTouchListener{
                 workBundle.putSerializable(MainActivity.WORK_KEY, worksList.get(lastExIndex));
                 workBundle.putBoolean(MainActivity.IS_ART_KEY, true);
                 workIntent.putExtras(workBundle);
-                //workIntent.putExtra(MainActivity.WORK_KEY, worksList.get(lastExIndex));
-                //workIntent.putExtra(MainActivity.IS_ART_KEY, true);
-                //startActivity(workIntent);
+                startActivity(workIntent);
                 Log.d("Room", "Work Artist " + worksList.get(lastExIndex).artist);
             }
         }

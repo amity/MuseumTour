@@ -25,13 +25,14 @@
         </activity>
         <activity
             android:name=".IntroductionActivity"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait"/>
 
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="46ee2b2494200fc37080231a2cfd401866e5ae25" />
 
-        <activity android:name=".RoomView"></activity>
+        <activity android:name=".RoomView"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

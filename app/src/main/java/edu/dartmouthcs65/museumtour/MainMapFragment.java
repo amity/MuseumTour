@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.util.Log;
+import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -18,6 +19,8 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.firebase.ui.storage.images.FirebaseImageLoader;
 import com.google.firebase.storage.StorageReference;
+
+import edu.dartmouthcs65.museumtour.RoomKit.BeaconTracker;
 
 
 public class MainMapFragment extends Fragment implements View.OnTouchListener {
@@ -182,6 +185,15 @@ public class MainMapFragment extends Fragment implements View.OnTouchListener {
                     rm3View.setImageAlpha(255);
                     break;
             }
+        }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (BeaconTracker.lastClassification != null) {
+            Pair<Integer, String> lastClassification = BeaconTracker.lastClassification;
+            onClassify(lastClassification.first, lastClassification.second);
         }
     }
 }

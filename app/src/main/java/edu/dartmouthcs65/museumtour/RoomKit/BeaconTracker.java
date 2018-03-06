@@ -41,7 +41,7 @@ public class BeaconTracker extends JsonHttpResponseHandler implements BeaconCons
     private static String MAP_ID = "5a96f0692616a30009a23ea4";
     private static String UUID = "B113B38F-8502-4DDF-B466-3F687EF15867";
     private static BeaconTracker instance;
-    public Pair<Integer, String> lastClassification = null;
+    public static Pair<Integer, String> lastClassification = null;
     private BeaconManager manager;
     private Context mContext;
     private Classifier.Listener listener;

@@ -32,7 +32,7 @@
 
         <activity
             android:name=".DetailView"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait"/>
 
         <meta-data
             android:name="io.fabric.ApiKey"
@@ -41,8 +41,6 @@
         <activity android:name=".RoomView"
             android:screenOrientation="portrait"/>
 
-        <activity android:name=".DetailView"
-            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

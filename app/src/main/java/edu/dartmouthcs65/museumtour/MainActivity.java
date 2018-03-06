@@ -87,7 +87,8 @@ public class MainActivity extends AppCompatActivity implements Classifier.Listen
                                             (String) work.child("artist").getValue(),
                                             (String) work.child("year").getValue(),
                                             (String) work.child("description").getValue(),
-                                            (String) work.child("photoURL").getValue());
+                                            (String) work.child("photoURL").getValue(),
+                                            (String) work.child("color").getValue());
                             Log.d("WORKNAME: ", work.getKey());
                         }
                     }

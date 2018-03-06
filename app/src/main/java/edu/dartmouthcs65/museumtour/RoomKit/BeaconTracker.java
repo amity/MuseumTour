@@ -212,7 +212,7 @@ public class BeaconTracker extends JsonHttpResponseHandler implements BeaconCons
                 Log.d("Tracker", "Sucessfully classified as room " + bestGuess.second + " with " + String.valueOf((int) dict.get(bestGuess)) + " occurances");
             }
         } else if (highestRm != null){
-            Log.d("Tracker", "Could not classify. Strongest guess " + bestGuess.second + " had only " + String.valueOf((int) dict.get(highestRm)) + " occurances");
+            Log.d("Tracker", "Could not classify. Strongest guess " + highestRm.second + " had only " + String.valueOf((int) dict.get(highestRm)) + " occurances");
         }
     }
 

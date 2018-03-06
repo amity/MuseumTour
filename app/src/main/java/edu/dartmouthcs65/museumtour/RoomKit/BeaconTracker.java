@@ -146,7 +146,6 @@ public class BeaconTracker extends JsonHttpResponseHandler implements BeaconCons
         }
         Gson gson = new Gson();
         String string = gson.toJson(data);
-        Log.d("posting with", string);
         StringEntity entity = null;
         try {
             entity = new StringEntity(string, ContentType.APPLICATION_JSON);

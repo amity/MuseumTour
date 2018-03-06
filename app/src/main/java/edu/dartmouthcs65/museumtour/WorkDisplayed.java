@@ -3,6 +3,7 @@ package edu.dartmouthcs65.museumtour;
 
 
 import android.graphics.Color;
+import android.os.Parcelable;
 
 import com.google.firebase.storage.StorageReference;
 

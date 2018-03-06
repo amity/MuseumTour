@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements Classifier.Listen
     DatabaseReference dRef;
 
     public static FirebaseStorage storage;
-    MuseumRoom[] rooms;
+    public static MuseumRoom[] rooms;
 
 
     @Override

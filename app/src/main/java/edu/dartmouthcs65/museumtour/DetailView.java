@@ -20,6 +20,7 @@ public class DetailView extends AppCompatActivity {
 
         WorkDisplayed work = (WorkDisplayed) getIntent().
                 getSerializableExtra(MainActivity.WORK_KEY);
+
         boolean isArt = getIntent().getBooleanExtra(MainActivity.IS_ART_KEY, true);
 
         TextView header = findViewById(R.id.detailHeader);

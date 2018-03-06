@@ -127,7 +127,8 @@ public class MainMapFragment extends Fragment implements View.OnTouchListener {
         } else if (meAction == MotionEvent.ACTION_UP) {
             // Up press, if lastRoomIndex matches current roomIdex, register valid roompress
             if (lastRoomIndex == roomIndex) {
-                Toast.makeText(getActivity().getApplicationContext(), "Room pressed: " + Globals.ROOM_NAMES[roomIndex], Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity().getApplicationContext(), "Room pressed: " +
+                        Globals.ROOM_NAMES[roomIndex], Toast.LENGTH_SHORT).show();
 
                 switch (lastRoomIndex) {
                     case 0:

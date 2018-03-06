@@ -129,36 +129,23 @@ public class MainMapFragment extends Fragment implements View.OnTouchListener {
             if (lastRoomIndex == roomIndex) {
                 Toast.makeText(getActivity().getApplicationContext(), "Room pressed: " + Globals.ROOM_NAMES[roomIndex], Toast.LENGTH_SHORT).show();
 
-                // Set all transparancy to zero. Then, switch transparency of selected room
-                // to 100
-                rm0View.setImageAlpha(0);
-                rm1View.setImageAlpha(0);
-                rm2View.setImageAlpha(0);
-                rm3View.setImageAlpha(0);
-
-                // TODO: Make this switch statement launch the room activity (or fragment,
-                // TODO: depending on impplementation) before changing map UI
                 switch (lastRoomIndex) {
                     case 0:
-                        rm0View.setImageAlpha(255);
                         break;
                     case 1:
                         Intent rm1Intent = new Intent(getActivity(), RoomView.class);
                         rm1Intent.putExtra(Globals.ROOM_NUM_KEY, 1);
                         startActivity(rm1Intent);
-                        rm1View.setImageAlpha(255);
                         break;
                     case 2:
                         Intent rm2Intent = new Intent(getActivity(), RoomView.class);
                         rm2Intent.putExtra(Globals.ROOM_NUM_KEY, 2);
                         startActivity(rm2Intent);
-                        rm2View.setImageAlpha(255);
                         break;
                     case 3:
                         Intent rm3Intent = new Intent(getActivity(), RoomView.class);
                         rm3Intent.putExtra(Globals.ROOM_NUM_KEY, 3);
                         startActivity(rm3Intent);
-                        rm3View.setImageAlpha(255);
                         break;
                 }
             }

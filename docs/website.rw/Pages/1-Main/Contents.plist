@@ -9,6 +9,8 @@
 		<dict>
 			<key>Dictionary</key>
 			<dict>
+				<key>BrowserTitle</key>
+				<string>Museum Tour</string>
 				<key>CreatedDate</key>
 				<date>2018-02-20T00:04:52Z</date>
 				<key>ID</key>
@@ -30,10 +32,10 @@
 				</dict>
 				<key>PublishingManifests</key>
 				<dict>
-					<key>file:///Users/john/Dropbox/School-work/2017-2018/Winter/Smartphone%20Programming/final/website/</key>
+					<key>file:///Users/john/Programming/final/docs/</key>
 					<dict>
 						<key>CreationDate</key>
-						<date>2018-02-20T05:50:32Z</date>
+						<date>2018-03-06T03:17:21Z</date>
 						<key>DigestAlgorithm</key>
 						<string>MD5</string>
 						<key>PageDigests</key>
@@ -42,11 +44,11 @@
 							<dict>
 								<key>Digest</key>
 								<data>
-								Gw0m7sVZlXTD
-								YCiTYoTP6w==
+								4SKz54VOexHJ
+								e+4zAbTOiQ==
 								</data>
 								<key>Size</key>
-								<integer>6985</integer>
+								<integer>6996</integer>
 							</dict>
 						</dict>
 						<key>PageID</key>

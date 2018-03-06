@@ -26,7 +26,7 @@ public class MainMapFragment extends Fragment implements View.OnTouchListener {
     private int lastRoomIndex;
 
     // Room image Views
-    ImageView rm0View, rm1View, rm2View, rm3View, rmHitView;
+    ImageView rm0View, rm1View, rm2View, rm3View, rmHitView, blank;
     StorageReference rm0Ref, rm1Ref, rm2Ref, rm3Ref, rmHitRef;
 
     public MainMapFragment() {
@@ -48,6 +48,7 @@ public class MainMapFragment extends Fragment implements View.OnTouchListener {
         rm1View = (ImageView) mainMapView.findViewById(R.id.rm_1_img);
         rm2View = (ImageView) mainMapView.findViewById(R.id.rm_2_img);
         rm3View = (ImageView) mainMapView.findViewById(R.id.rm_3_img);
+        blank = (ImageView) mainMapView.findViewById(R.id.blank);
         rmHitView = (ImageView) mainMapView.findViewById(R.id.hitboxes);
 
         // Set transparancy of all rooms to 0, except null room
@@ -69,29 +70,29 @@ public class MainMapFragment extends Fragment implements View.OnTouchListener {
         Glide.with(this)
                 .using(new FirebaseImageLoader())
                 .load(rm0Ref)
-                .dontAnimate()
                 .into(rm0View);
         Glide.with(this)
                 .using(new FirebaseImageLoader())
                 .load(rm1Ref)
-                .dontAnimate()
                 .into(rm1View);
         Glide.with(this)
                 .using(new FirebaseImageLoader())
                 .load(rm2Ref)
-                .dontAnimate()
                 .into(rm2View);
         Glide.with(this)
                 .using(new FirebaseImageLoader())
                 .load(rm3Ref)
-                .dontAnimate()
                 .into(rm3View);
         Glide.with(this)
                 .using(new FirebaseImageLoader())
                 .load(rmHitRef)
                 .dontAnimate()
                 .into(rmHitView);
-
+        rm0View.setVisibility(View.VISIBLE);
+        rm1View.setVisibility(View.VISIBLE);
+        rm2View.setVisibility(View.VISIBLE);
+        rm3View.setVisibility(View.VISIBLE);
+        blank.setVisibility(View.INVISIBLE);
 
 
 
@@ -162,7 +163,6 @@ public class MainMapFragment extends Fragment implements View.OnTouchListener {
                 }
             }
         }
-
 
         return true;
     }

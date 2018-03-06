@@ -12,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:src="@drawable/error"
+        android:visibility="invisible"
         android:scaleType="centerCrop"/>
 
     <ImageView
@@ -19,6 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:src="@drawable/error"
+        android:visibility="invisible"
         android:scaleType="centerCrop"/>
 
     <ImageView
@@ -26,6 +28,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:src="@drawable/error"
+        android:visibility="invisible"
         android:scaleType="centerCrop"/>
 
     <ImageView
@@ -33,6 +36,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:src="@drawable/error"
+        android:visibility="invisible"
+
+        android:scaleType="centerCrop"/>
+
+    <ImageView
+        android:id="@+id/blank"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/blank"
         android:scaleType="centerCrop"/>
 
 

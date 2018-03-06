@@ -147,6 +147,8 @@ public class MainActivity extends AppCompatActivity implements Classifier.Listen
 
     @Override
     public void onClassify(Integer roomIndex, String room) {
-        mainMap.onClassify(roomIndex, room);
+        if (roomIndex != null && room != null) {
+            mainMap.onClassify(roomIndex, room);
+        }
     }
 }

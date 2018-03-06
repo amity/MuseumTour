@@ -108,8 +108,8 @@ public class RoomView extends AppCompatActivity implements View.OnTouchListener{
         } else if (meAction == MotionEvent.ACTION_UP) {
             // Up press, if lastExIndex matches current exIndex, register valid roompress
             if (lastExIndex == exIndex && lastExIndex != 0) {
-                Toast.makeText(this, "Art " + lastExIndex + " pressed", Toast.LENGTH_SHORT).show();
-                Intent workIntent = new Intent(this, DetailView.class);
+                //Toast.makeText(this, "Art " + lastExIndex + " pressed", Toast.LENGTH_SHORT).show();
+                Intent workIntent = new Intent(getApplicationContext(), DetailView.class);
                 Bundle workBundle = new Bundle();
                 workBundle.putSerializable(MainActivity.WORK_KEY, worksList.get(lastExIndex));
                 if(!thisRoom.isArt){

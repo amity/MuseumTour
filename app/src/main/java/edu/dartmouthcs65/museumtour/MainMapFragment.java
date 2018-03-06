@@ -127,24 +127,24 @@ public class MainMapFragment extends Fragment implements View.OnTouchListener {
         } else if (meAction == MotionEvent.ACTION_UP) {
             // Up press, if lastRoomIndex matches current roomIdex, register valid roompress
             if (lastRoomIndex == roomIndex) {
-                Toast.makeText(getActivity().getApplicationContext(), "Room pressed: " +
-                        Globals.ROOM_NAMES[roomIndex], Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity().getApplicationContext(), "Room pressed: " +
+                        //Globals.ROOM_NAMES[roomIndex], Toast.LENGTH_SHORT).show();
 
                 switch (lastRoomIndex) {
                     case 0:
                         break;
                     case 1:
-                        Intent rm1Intent = new Intent(getActivity(), RoomView.class);
+                        Intent rm1Intent = new Intent(getActivity().getApplicationContext(), RoomView.class);
                         rm1Intent.putExtra(Globals.ROOM_NUM_KEY, 1);
                         startActivity(rm1Intent);
                         break;
                     case 2:
-                        Intent rm2Intent = new Intent(getActivity(), RoomView.class);
+                        Intent rm2Intent = new Intent(getActivity().getApplicationContext(), RoomView.class);
                         rm2Intent.putExtra(Globals.ROOM_NUM_KEY, 2);
                         startActivity(rm2Intent);
                         break;
                     case 3:
-                        Intent rm3Intent = new Intent(getActivity(), RoomView.class);
+                        Intent rm3Intent = new Intent(getActivity().getApplicationContext(), RoomView.class);
                         rm3Intent.putExtra(Globals.ROOM_NUM_KEY, 3);
                         startActivity(rm3Intent);
                         break;
@@ -156,30 +156,32 @@ public class MainMapFragment extends Fragment implements View.OnTouchListener {
     }
 
     public void onClassify(Integer roomIndex, String room) {
-        rm0View.setImageAlpha(0);
-        rm1View.setImageAlpha(0);
-        rm2View.setImageAlpha(0);
-        rm3View.setImageAlpha(0);
+        if (getActivity() != null) {
+            rm0View.setImageAlpha(0);
+            rm1View.setImageAlpha(0);
+            rm2View.setImageAlpha(0);
+            rm3View.setImageAlpha(0);
 
-        switch (roomIndex) {
-            case 0:
-                rm0View.setImageAlpha(255);
-                break;
-            case 1:
-                Intent rm1Intent = new Intent(getActivity(), RoomView.class);
-                rm1Intent.putExtra(Globals.ROOM_NUM_KEY, 1);
-                rm1View.setImageAlpha(255);
-                break;
-            case 2:
-                Intent rm2Intent = new Intent(getActivity(), RoomView.class);
-                rm2Intent.putExtra(Globals.ROOM_NUM_KEY, 2);
-                rm2View.setImageAlpha(255);
-                break;
-            case 3:
-                Intent rm3Intent = new Intent(getActivity(), RoomView.class);
-                rm3Intent.putExtra(Globals.ROOM_NUM_KEY, 3);
-                rm3View.setImageAlpha(255);
-                break;
+            switch (roomIndex) {
+                case 0:
+                    rm0View.setImageAlpha(255);
+                    break;
+                case 1:
+                    Intent rm1Intent = new Intent(getActivity().getApplicationContext(), RoomView.class);
+                    rm1Intent.putExtra(Globals.ROOM_NUM_KEY, 1);
+                    rm1View.setImageAlpha(255);
+                    break;
+                case 2:
+                    Intent rm2Intent = new Intent(getActivity().getApplicationContext(), RoomView.class);
+                    rm2Intent.putExtra(Globals.ROOM_NUM_KEY, 2);
+                    rm2View.setImageAlpha(255);
+                    break;
+                case 3:
+                    Intent rm3Intent = new Intent(getActivity().getApplicationContext(), RoomView.class);
+                    rm3Intent.putExtra(Globals.ROOM_NUM_KEY, 3);
+                    rm3View.setImageAlpha(255);
+                    break;
+            }
         }
     }
 }

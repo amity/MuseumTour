@@ -16,7 +16,7 @@
 					<key>file:///Users/john/Dropbox/School-work/2017-2018/Winter/Smartphone%20Programming/final/website/</key>
 					<true/>
 					<key>file:///Users/john/Programming/final/docs/</key>
-					<false/>
+					<true/>
 				</dict>
 				<key>ColourStyles</key>
 				<dict/>
@@ -40,6 +40,8 @@
 				<string>High</string>
 				<key>IndexFilename</key>
 				<string>index.html</string>
+				<key>MetaDescription</key>
+				<string>A RoomKit powered Museum Tour</string>
 				<key>OutputFormat</key>
 				<string>Default</string>
 				<key>OutputXMLDeclaration</key>

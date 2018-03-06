@@ -51,7 +51,7 @@ public class BeaconTracker extends JsonHttpResponseHandler implements BeaconCons
     private BeaconTracker(Context context) {
         manager = BeaconManager.getInstanceForApplication(context);
         manager.getBeaconParsers().add(new BeaconParser().setBeaconLayout(IBEACON_LAYOUT));
-        manager.setForegroundScanPeriod(300);
+        manager.setForegroundScanPeriod(150);
         mContext = context;
     }
 
@@ -146,7 +146,7 @@ public class BeaconTracker extends JsonHttpResponseHandler implements BeaconCons
             data.add(map);
         }
         toPost.add(data);
-        if (toPost.size() > 5) {
+        if (toPost.size() >= 5) {
             Gson gson = new Gson();
             String string = gson.toJson(toPost);
             StringEntity entity = null;
@@ -196,7 +196,6 @@ public class BeaconTracker extends JsonHttpResponseHandler implements BeaconCons
                 max = ((int) dict.get(guess));
             }
         }
-        classificationBuffer.remove(0);
 
         if (bestGuess != null) {
             listener.onClassify(bestGuess.first, bestGuess.second);

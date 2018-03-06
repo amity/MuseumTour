@@ -164,7 +164,6 @@ public class MainMapFragment extends Fragment implements View.OnTouchListener {
             }
         }
 
-
         return true;
     }
 

@@ -77,7 +77,6 @@ public class MainActivity extends AppCompatActivity implements Classifier.Listen
                 // Includes index because you need a zero for null room
                 rooms = new MuseumRoom[(int) dataSnapshot.getChildrenCount() + 1];
                 for (DataSnapshot room: dataSnapshot.getChildren()) {
-                    Log.d("ROOMNAME: ", room.getKey());
                     WorkDisplayed[] roomWorks = new WorkDisplayed[(int) room.getChildrenCount()];
                     roomWorks[0] = null;
                     for (DataSnapshot work : room.getChildren()){
@@ -89,10 +88,8 @@ public class MainActivity extends AppCompatActivity implements Classifier.Listen
                                             (String) work.child("description").getValue(),
                                             (String) work.child("photoURL").getValue(),
                                             (String) work.child("color").getValue());
-                            Log.d("WORKNAME: ", work.getKey());
                         }
                     }
-
                     Long roomIndex = (Long) room.child("index").getValue();
                     Integer indexRoom = Math.toIntExact(roomIndex);
                     rooms[indexRoom] =  new MuseumRoom(room.getKey(), roomWorks);

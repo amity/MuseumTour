@@ -21,6 +21,7 @@ import org.altbeacon.beacon.BeaconParser;
 import org.altbeacon.beacon.Identifier;
 import org.altbeacon.beacon.RangeNotifier;
 import org.altbeacon.beacon.Region;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -44,8 +45,8 @@ public class BeaconTracker extends JsonHttpResponseHandler implements BeaconCons
     private Context mContext;
     private Classifier.Listener listener;
     private List<List<Beacon>> last5 = new ArrayList<>();
+    private List<List<Map<String, Object>>> toPost = new ArrayList<>();
     private ServiceConnection serviceConnection;
-    private List<Pair<Integer, String>> classificationBuffer = new ArrayList<>();
 
     private BeaconTracker(Context context) {
         manager = BeaconManager.getInstanceForApplication(context);
@@ -144,55 +145,61 @@ public class BeaconTracker extends JsonHttpResponseHandler implements BeaconCons
 
             data.add(map);
         }
-        Gson gson = new Gson();
-        String string = gson.toJson(data);
-        StringEntity entity = null;
-        try {
-            entity = new StringEntity(string, ContentType.APPLICATION_JSON);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return;
-        }
-        client.addHeader("authorization", "29ece557ad5f54dc1b813d56d53e7ac60dc7da1417734079b0");
-        client.addHeader("client_os", "android");
+        toPost.add(data);
+        if (toPost.size() > 5) {
+            Gson gson = new Gson();
+            String string = gson.toJson(toPost);
+            StringEntity entity = null;
+            try {
+                entity = new StringEntity(string, ContentType.APPLICATION_JSON);
+            } catch (Exception e) {
+                e.printStackTrace();
+                return;
+            }
+            client.addHeader("authorization", "29ece557ad5f54dc1b813d56d53e7ac60dc7da1417734079b0");
+            client.addHeader("client_os", "android");
 
-        client.post(mContext, "https://roomkit.herokuapp.com/maps/" + MAP_ID, entity, "application/json", this);
+            client.post(mContext, "https://roomkit.herokuapp.com/maps/" + MAP_ID + "/multiclassify", entity, "application/json", this);
+            toPost.clear();
+        }
     }
 
     @Override
-    public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+    public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
+        List<Pair<Integer, String>> classificationBuffer = new ArrayList<>();
         try {
-            int roomIndex = (Integer) response.get("roomIndex");
-            String room = (String) response.get("room");
-            Pair<Integer, String> pair = Pair.create(roomIndex, room);
-            classificationBuffer.add(pair);
-            if (classificationBuffer.size() > 5) {
-                Pair<Integer, String> bestGuess = null;
-                Integer max = 3;
-                Map<Pair<Integer, String>, Integer> dict = new HashMap<>();
-
-                for (Pair<Integer, String> guess : classificationBuffer) {
-                    if (dict.get(guess) == null) {
-                        dict.put(guess, 1);
-                    }else{
-                        dict.put(guess, dict.get(guess) + 1);
-                    }
-                }
-
-                for (Pair<Integer, String> guess : dict.keySet()) {
-                    if (((int) dict.get(guess)) > max) {
-                        bestGuess = guess;
-                        max = ((int) dict.get(guess));
-                    }
-                }
-                classificationBuffer.remove(0);
-
-                if (bestGuess != null) {
-                    listener.onClassify(bestGuess.first, bestGuess.second);
-                }
+            for (int i = 0; i < response.length(); i++) {
+                int roomIndex = (Integer) response.getJSONObject(i).get("roomIndex");
+                String room = (String) response.getJSONObject(i).get("room");
+                Pair<Integer, String> pair = Pair.create(roomIndex, room);
+                classificationBuffer.add(pair);
             }
         } catch (JSONException exp) {
 
+        }
+
+        Pair<Integer, String> bestGuess = null;
+        Integer max = 4;
+        Map<Pair<Integer, String>, Integer> dict = new HashMap<>();
+
+        for (Pair<Integer, String> guess : classificationBuffer) {
+            if (dict.get(guess) == null) {
+                dict.put(guess, 1);
+            }else{
+                dict.put(guess, dict.get(guess) + 1);
+            }
+        }
+
+        for (Pair<Integer, String> guess : dict.keySet()) {
+            if (((int) dict.get(guess)) > max) {
+                bestGuess = guess;
+                max = ((int) dict.get(guess));
+            }
+        }
+        classificationBuffer.remove(0);
+
+        if (bestGuess != null) {
+            listener.onClassify(bestGuess.first, bestGuess.second);
         }
     }
 

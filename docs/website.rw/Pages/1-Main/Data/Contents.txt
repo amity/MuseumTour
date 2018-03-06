@@ -8,6 +8,6 @@ Currently, there are many methods that museums employ to give contextual informa
 # The Product:
 [![Build Status](https://travis-ci.com/johnlev/CS65-RoomKit.svg?branch=master)](https://travis-ci.com/johnlev/CS65-RoomKit)
 
-The current release APK can be found here: [Release APK](https://github.com/johnlev/CS65-RoomKit)
+The current release APKs can be found here: [Release APKs](https://github.com/johnlev/CS65-RoomKit/releases)
 
 You can find the bleeding edge code on [Github](https://github.com/johnlev/CS65-RoomKit)

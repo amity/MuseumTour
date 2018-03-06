@@ -30,10 +30,10 @@
 				</dict>
 				<key>PublishingManifests</key>
 				<dict>
-					<key>file:///Users/john/Dropbox/School-work/2017-2018/Winter/Smartphone%20Programming/final/website/</key>
+					<key>file:///Users/john/Programming/final/docs/</key>
 					<dict>
 						<key>CreationDate</key>
-						<date>2018-02-20T05:50:32Z</date>
+						<date>2018-03-06T03:13:09Z</date>
 						<key>DigestAlgorithm</key>
 						<string>MD5</string>
 						<key>PageDigests</key>
@@ -42,11 +42,11 @@
 							<dict>
 								<key>Digest</key>
 								<data>
-								Gw0m7sVZlXTD
-								YCiTYoTP6w==
+								0xzhxkG3ChCj
+								TGcm8Z+oIg==
 								</data>
 								<key>Size</key>
-								<integer>6985</integer>
+								<integer>6996</integer>
 							</dict>
 						</dict>
 						<key>PageID</key>

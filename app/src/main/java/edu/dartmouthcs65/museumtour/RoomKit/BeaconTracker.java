@@ -181,7 +181,7 @@ public class BeaconTracker extends JsonHttpResponseHandler implements BeaconCons
         }
 
         Pair<Integer, String> bestGuess = null;
-        Integer max = 4;
+        Integer max = 3;
         Map<Pair<Integer, String>, Integer> dict = new HashMap<>();
 
         for (Pair<Integer, String> guess : classificationBuffer) {
@@ -192,10 +192,16 @@ public class BeaconTracker extends JsonHttpResponseHandler implements BeaconCons
             }
         }
 
+        Pair<Integer, String> highestRm = null;
+        int sampleMax = 0;
         for (Pair<Integer, String> guess : dict.keySet()) {
             if (((int) dict.get(guess)) > max) {
                 bestGuess = guess;
                 max = ((int) dict.get(guess));
+            }
+            if (((int) dict.get(guess)) > sampleMax) {
+                highestRm = guess;
+                sampleMax = ((int) dict.get(guess));
             }
         }
 
@@ -203,7 +209,10 @@ public class BeaconTracker extends JsonHttpResponseHandler implements BeaconCons
             lastClassification = bestGuess;
             if (listener != null) {
                 listener.onClassify(bestGuess.first, bestGuess.second);
+                Log.d("Tracker", "Sucessfully classified as room " + bestGuess.second + " with " + String.valueOf((int) dict.get(bestGuess)) + " occurances");
             }
+        } else if (highestRm != null){
+            Log.d("Tracker", "Could not classify. Strongest guess " + bestGuess.second + " had only " + String.valueOf((int) dict.get(highestRm)) + " occurances");
         }
     }
 

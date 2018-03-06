@@ -1,0 +1,3 @@
+[submodule "CS65-Trainer"]
+	path = CS65-Trainer
+	url = https://github.com/johnlev/CS65-Trainer.git

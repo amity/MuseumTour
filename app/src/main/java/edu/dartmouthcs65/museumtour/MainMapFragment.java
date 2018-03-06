@@ -20,7 +20,7 @@ import com.firebase.ui.storage.images.FirebaseImageLoader;
 import com.google.firebase.storage.StorageReference;
 
 
-public class MainMapFragment extends Fragment implements View.OnTouchListener{
+public class MainMapFragment extends Fragment implements View.OnTouchListener {
     // Index of the room pressed on the DOWN touch. Will be compared to room index
     // pressed on the UP touch. If the two are not equal, do not consider a valid click.
     private int lastRoomIndex;
@@ -165,5 +165,33 @@ public class MainMapFragment extends Fragment implements View.OnTouchListener{
 
 
         return true;
+    }
+
+    public void onClassify(Integer roomIndex, String room) {
+        rm0View.setImageAlpha(0);
+        rm1View.setImageAlpha(0);
+        rm2View.setImageAlpha(0);
+        rm3View.setImageAlpha(0);
+
+        switch (roomIndex) {
+            case 0:
+                rm0View.setImageAlpha(255);
+                break;
+            case 1:
+                Intent rm1Intent = new Intent(getActivity(), RoomView.class);
+                rm1Intent.putExtra(Globals.ROOM_NUM_KEY, 1);
+                rm1View.setImageAlpha(255);
+                break;
+            case 2:
+                Intent rm2Intent = new Intent(getActivity(), RoomView.class);
+                rm2Intent.putExtra(Globals.ROOM_NUM_KEY, 2);
+                rm2View.setImageAlpha(255);
+                break;
+            case 3:
+                Intent rm3Intent = new Intent(getActivity(), RoomView.class);
+                rm3Intent.putExtra(Globals.ROOM_NUM_KEY, 3);
+                rm3View.setImageAlpha(255);
+                break;
+        }
     }
 }

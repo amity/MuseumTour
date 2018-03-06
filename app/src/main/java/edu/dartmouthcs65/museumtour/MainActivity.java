@@ -1,6 +1,9 @@
 package edu.dartmouthcs65.museumtour;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -9,8 +12,7 @@ import android.os.Bundle;
 
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.MotionEvent;
-import android.view.View;
+import android.widget.Toast;
 
 
 import com.crashlytics.android.Crashlytics;
@@ -19,6 +21,10 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import edu.dartmouthcs65.museumtour.RoomKit.BeaconTracker;
+import edu.dartmouthcs65.museumtour.RoomKit.Classifier;
+import edu.dartmouthcs65.museumtour.RoomKit.RoomKit;
 import io.fabric.sdk.android.Fabric;
 import com.google.firebase.storage.FirebaseStorage;
 
@@ -26,7 +32,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements Classifier.Listener {
 
     public static final String WORK_KEY = "WORK_KEY";
     public static final String IS_ART_KEY = "ART_OR_EXHIBIT";
@@ -35,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     Toolbar myActBr;
 
     //Fragments
-    Fragment mainMap;
+    MainMapFragment mainMap;
 
     //Fragment manager
     FragmentManager mainFM;
@@ -120,4 +126,28 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (RoomKit.onRequestPermissionsResult(requestCode, permissions, grantResults)) {
+            // Handled
+        }else{
+            // Not handled
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        RoomKit.checkPermissions(this);
+        BeaconTracker tracker = BeaconTracker.getInstance(this);
+        tracker.setOnClassifyListener(this);
+        tracker.start();
+    }
+
+    @Override
+    public void onClassify(Integer roomIndex, String room) {
+        Log.d("classify", room);
+        mainMap.onClassify(roomIndex, room);
+    }
 }

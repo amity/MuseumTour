@@ -2,6 +2,7 @@ package edu.dartmouthcs65.museumtour;
 
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.util.Log;
 import android.view.MotionEvent;
 
 /**
@@ -38,7 +39,11 @@ public class Hitbox {
         // Get the hitbox color at these coordinates
         Integer colorTouched = null; // Color of the pixel at the pressed location
 
-        colorTouched = hitboxBM.getPixel(xCoord, yCoord);
+        try {
+            colorTouched = hitboxBM.getPixel(xCoord, yCoord);
+        } catch (Exception e) {
+            Log.d("Hitbox", e.toString());
+        }
 
         // If color was selected, see if it matches any of the
 

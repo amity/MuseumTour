@@ -1,0 +1,104 @@
+{
+  "kemeny" : {
+    "modern art" : {
+      "Blushing Beauty" : {
+        "artist" : "Peter Max",
+        "color" : "#F2994A",
+        "description" : "Peter Max is perhaps best known as an icon of the 1970’s for his pop art: Max worked on the Beatles’ 'Yellow Submarine', designed countless posters for popular events such as the World Cup, and was perhaps the best-known artist associated with the 1967 Summer of Love in San Francisco, an epicenter of “hippie” subculture. In the decades since, he has found renown through his series’ depicting the American flag (in various states of criticism) and the Statue of Liberty, as well as a wealth of merchandising and high-profile licensing opportunities. Yet despite all of his popular and commercial success, Max is known to be perhaps most personally fond of his series depicting the “Blushing Beauty.” Max is said to have painted the portrait in profile, which reportedly appeared to him in a dream, hundreds of times. Though the details change, such as the woman’s flowery hair and her bonnet, the profile is unchanging. As the story goes, Max was working one day when he spotted a woman out of his window, and rushed outside to meet her, with a drawing. Max introduced himself to his future wife with the line, “I’ve been drawing you all my life.” This copy is just one of these hundreds of paintings of Mary Max, which are popular across the world for their vivid colors.",
+        "index" : 1,
+        "photoURL" : "gs://cs65-museumtour.appspot.com/modernart/blushingbeauty.jpg",
+        "year" : "2002"
+      },
+      "Cut With the Kitchen Knife Dada Through the Last Weimar Republic Beer-Belly Cultural Epoch of Germany" : {
+        "artist" : "Hannah Höch",
+        "color" : "#EB5757",
+        "description" : "Dadaism is perhaps the most intriguing of the multiplicity of localized art movements emerging in Eastern Europe in the first half of the 20th century, but for many, Dada wasn’t just an artistic movement, but a subculture and lifestyle. One of the most famous works of an art movement defined by its embrace of the absurd, accidental, and unpredictable, Hannah Höch’s photo collage is no different. Yet while Dadaists may have felt as though life were illogical and entropic, this chaos was not necessarily without meaning, and what may appear at first glance to be a hodgepodge of images hastily pasted together, 'Cut with the Kitchen Knife Dada Through the Last Weimar Republic Beer-Belly Cultural Epoch of Germany' was intended as a pointed criticism of the corruption of the interbellum “Weimar Republic” government in Germany – whilst alluding to the close ties between the industrialization of German and the nation’s patriarchal militarization through the explosion of mechanical gears and factory scenes across the image. The collapsing attempt at democracy’s use of media propaganda was rivaled perhaps only by the Nazi regime that followed – a prediction which Höch alluded to with her use of newspaper clippings to manipulate the ‘truth’ of the images in 'Cut with the Kitchen Knife.' \n The collage is loosely divided into four quadrants, marked by the newspaper clippings that feature prominently in each: clockwise from top-left, “Put your money in DADA!”, “The Anti-Dada”, “The Great Dada World,” and “Join Dada!” The upper left, prominently featuring an image of Albert Einstein amongst machines, suggests the image of Dada as a product of the accelerated German industrialization: often historicized as a simple one-way narrative of progress, Dadaists were just one of many groups to see the havoc this technological development was wreaking on the social and international order in Europe. The bottom-left corner focuses on images of crowds amongst factories. The figure of Karl Liebknecht, German communist leader who was jailed by the Weimar government, rising above, with the words “Join Dada!” escaping his mouth: a depiction of the natural human reaction to the dehumanization and alienation faced both by those who fell victim to workplace degradation amidst machinization, and those who fell under the wheels of the German war machine – with the Communist Spartacist League leading German movements for labor protections and the anti-war movement, and the embrace of Dada and the absurd as a rejection of the narrative of progress. The top-right Anti-Dada section, in comparison, features mocking images of political figures like Kaiser Wilhelm II, while the bottom-right “world of Dada” includes images of many male Dada artists and leftist thinkers, pasted upon bodies of ballerinas and infants. Höch was one of few female artists prominent in the Dada movement, and her criticism of the social order promoted by the Weimar regime is marked by her emasculating depiction of central figures in the male-dominated political and artistic spheres in German society. In a country whose patriarchal military structure and paternalistic ethnonationalism would prove disastrous in the decades to come, Höch’s condemnations of gender disparity are cemented through a map of women’s suffrage in Europe in the bottom-right corner.",
+        "index" : 3,
+        "photoURL" : "gs://cs65-museumtour.appspot.com/modernart/cutwiththekitchenknife.jpg",
+        "year" : "1920"
+      },
+      "Guernica" : {
+        "artist" : "Pablo Picasso",
+        "color" : "#219653",
+        "description" : "Pablo Picasso, alongside his contemporary, Georges Braque, were the pioneers of perhaps the most (in)famous art movements of the twentieth century: Cubism. Picasso’s revolutionary take on representing a three-dimensional world in the predominantly two-dimensional space of painting was met in many cases with shock and horror, at a time when the increasing prominence of the camera fostered hyperrealism and the reproduction of the image in the art world. Yet of all his works, Picasso’s Guernica was perhaps the most influential in proving that by breaking objects up and reassembling them, Cubism could represent reality: if not in the same way the human eye does. \n Guernica is an image of the town of the same name, which, despite being predominantly civilian women and children at the time, was targeted in 1937 by German aerial bombing during the Spanish Civil War for its support for the Republican resistance. The inhumanity of the Spanish Civil War, especially in light of the influence of international powers, is often seen by historians as a microcosm of the World War that was to follow: and the small towns of the Spanish countryside were often the targets of attacks designed more to test new weapons of war than to achieve a strategic objective. The painting was commissioned by the Spanish Republican government, and the deconstructed flames and anguished animals in Guernica are often considered to make up one of the most powerful anti-war paintings of all time.",
+        "index" : 2,
+        "photoURL" : "gs://cs65-museumtour.appspot.com/modernart/guernica.jpg",
+        "year" : "1937"
+      },
+      "art" : true,
+      "index" : 2
+    },
+    "natural history" : {
+      "Ankylosaurus" : {
+        "artist" : "A. magniventris",
+        "color" : "#219653",
+        "description" : "Known for its heavy armor and imposing tail club, ankylosaurus is estimated to have been approximately twenty feet long, weighing five to eight tons. Despite its imposing appearance, it was primarily herbivorous, likely eating predominantly ferns and short shrubs. Scientists have theorized that the tail club, made up primarily of bone, may have been used for defense or combat with other ankylosaurs – while judging from fossil locations, ankylosaurs don’t appear to have been herd animals, social dynamics of the animal remain enigmatic, and difficult to speculate on given the relative scarcity of fossils of the species. \n Ankylosaurus fossils were first uncovered in the Hell Creek formation in Montana. A life-size model featured at the 1964 World Fair, as well as numerous popular culture depictions, have led to ankylosaurus being one of the more widely-known dinosaurs relative to the small number of ankylosaur fossils that have been discovered.",
+        "index" : 2,
+        "photoURL" : "gs://cs65-museumtour.appspot.com/naturalhistory/ankylosaurus.jpg",
+        "year" : "Cretaceous Period"
+      },
+      "Monolith" : {
+        "artist" : "Tycho Magnetic Anomaly-0",
+        "color" : "#F2994A",
+        "description" : "Uncovered in Olduvai Gorge. Purpose unknown.",
+        "index" : 3,
+        "photoURL" : "gs://cs65-museumtour.appspot.com/naturalhistory/monolith.jpg",
+        "year" : "Pliocene Era"
+      },
+      "Nautilus Fossil" : {
+        "artist" : "Nautilidae",
+        "color" : "#EB5757",
+        "description" : "The nautilus is a genus of undersea mollusks, and the common name for the family Nautilidae. Nautilidae are the only non-extinct family in their entire subclass, which has persisted across millions of years of history, leaving them of particular interest to evolutionary biologists. Nautili propel themselves by drawing water in and out of a funnel called their ‘hyponome,’ using jet propulsion to travel laterally. They can regulate their buoyancy to move vertically through managing the water and air levels inside of their shells. They have rudimentary brains and eyes, and have been shown to exhibit basic learning capabilities in studies, though not nearly as advanced as their close relative, the octopus. Nautilidae are primarily scavengers, eating deceased animals from the sea floor. They are believed to use predominantly a simple sense of smell to locate food, as their eyes do not allow for complex imaging. The genus all exhibit very slow reproductive cycles, with eggs taking up to a year to hatch, making nautilidae particularly vulnerable to population threats, perhaps a reason why most members of the subclass have gone extinct. Yet despite numerous evolutionary challenges, the genus has survived fundamentally unchanged for over 500 million years, making it known by many as a “living fossil.",
+        "index" : 1,
+        "photoURL" : "gs://cs65-museumtour.appspot.com/naturalhistory/nautilus.jpg",
+        "year" : "Late Cambrian Period"
+      },
+      "art" : false,
+      "index" : 3
+    },
+    "van gogh" : {
+      "Road with Cypress and Star" : {
+        "artist" : "Vincent Van Gogh",
+        "color" : "#F2C94C",
+        "description" : "Van Gogh's fascination with Cypress trees occupies many of his later works, famously here and in ‘Starry Night’: several were quite visible from the Saint-Paul asylum in Saint-Rémy within which Van Gogh spent many of his later years as a self-admitted patient. This painting was reportedly inspired by the Christian allegory ‘The Pilgrim's Progress’, and thematically was intended to be similar to Paul Gauguin's ‘Christ in the Garden of Olives.’ In addition to themes discovered from Van Gogh’s letters, many critical analyses have lent credence to the claim that Van Gogh sought to portray that he expected to die soon while painting the work -- with the emerging crescent moon on the right overshadowing its mirror across the Cypress obelisk, the fading evening star. Sure enough, Van Gogh shot himself in the chest within the year, in poverty and relative obscurity. Though during his life, Van Gogh had friendships and interactions with many artists of the French avant-garde, it was not until after his death that the narrative of the troubled artist emerged, and his works found popular and critical acclaim.",
+        "index" : 4,
+        "photoURL" : "gs://cs65-museumtour.appspot.com/vangogh/roadwithcypressandstar.jpg",
+        "year" : "1890"
+      },
+      "Self-Portrait: Saint-Remy" : {
+        "artist" : "Vincent Van Gogh",
+        "color" : "#EB5757",
+        "description" : "Van Gogh’s last known self-portrait (of about forty), this work was painted just before he left the asylum in Saint-Rémy in early 1890. Van Gogh had described, in a letter to his sister, an effort to make a portrait that entailed “a deeper likeness than that obtained by a photographer.” Van Gogh’s piercing eyes and the swirling textures seek to paint an image of a man grappling with internal conflict. His facial features are set in sharp contrast to the world around him as his suit and background blur together – Van Gogh is known to have suffered from auditory (and perhaps visual) hallucinations, as well as acute mental breakdowns; and his mental illness is generally seen as having driven him to feel intensely isolated from the world. After being shown to Van Gogh's doctor and deemed “fanatical,” Van Gogh sent this last self-portrait to his brother, Theo. Before being moved to the Kemeny Museum, it was featured in the Musee d’Orsay in Paris. It is widely considered one of the best examples of Van Gogh’s use of expressive brushwork to convey complex emotional states in his paintings, one of the signatures of Post-Impressionism.",
+        "index" : 2,
+        "photoURL" : "gs://cs65-museumtour.appspot.com/vangogh/selfportrait.jpg",
+        "year" : "1889"
+      },
+      "Starry Night" : {
+        "artist" : "Vincent Van Gogh",
+        "color" : "#2F80ED",
+        "description" : "\"Perhaps Van Gogh’s most famous work, 'Starry Night' was on display in the Museum of Modern Art in New York until being acquired by the Kemeny Museum. The painting depicts the view from Van Gogh’s asylum room in Saint-Rémy, where he spent many of the last months of his life and produced many of his most iconic paintings. Van Gogh painted more than twenty paintings of this view, with 'Starry Night' being the view facing east just before dawn; most of the other paintings were daytime views of the field and surrounding trees. While the painting has found popular success, Van Gogh himself was actually rather distasteful of it: he reportedly held back from mailing it on one occasion when he didn’t have enough postage to send all the paintings he intended. Like many of the paintings done during his time in the asylum, Van Gogh indicated that 'Starry Night' was also intended as a musing upon his thoughts towards death – incorporating the persistent theme of dimming stars as symbolic of the 36-year-old artist’s fading life force. 'Starry Night' was, according to Van Gogh, too unrealistic for his tastes, a distortion upon the world that he sought to represent accurately, if not photorealistically, in his art. He is also reported as having said that the stars in the painting were \"too big.\" Though it sold after Van Gogh’s death and changed hands repeatedly, many art critics consider it possible that it came to be popularly considered a staple of Van Gogh’s work only after its display in the MoMA.\"",
+        "index" : 1,
+        "photoURL" : "gs://cs65-museumtour.appspot.com/vangogh/starrynight.jpg",
+        "year" : "1889"
+      },
+      "Sunflowers" : {
+        "artist" : "Vincent Van Gogh",
+        "color" : "#F2994A",
+        "description" : "Created to symbolize gratitude, this painting’s original was gifted from Van Gogh to his friend and colleague, Paul Gauguin, for Gauguin’s bedroom. The yellows were even more intense when the painting was first created – Van Gogh is well-known for his use of emerging pigments to create vivid colors. However, while the paintings were peerless in their brightness at the time, the specific yellow used in these paintings in the late 1880’s, yellow chromium, contains sulfate, which decays far faster than other pigmentations when exposed to light, dulling Van Gogh’s yellow paintings far faster than other contemporary works. \n Van Gogh painted two series of sunflower-focused paintings: one in Paris, and one in Arles. The former focused on sunflowers on the ground, while the latter, including this piece, consisted of flowers in vases—the second set was intended as part of his “Decoration for the Yellow House” series, which was created to decorate the artists’ commune in Arles, France that Van Gogh had longed to create. Van Gogh and Gauguin dwelled there together for several months, up until the altercation that was followed by Van Gogh (in)famously cutting his own ear off after reporting auditory hallucinations. The decoration series consisted primarily of a bulk of size 30 (92 x 72 cm) canvasses that were intended to be hung up upon the walls of the home, consisting primarily of domestic scenes. “The Bedroom” is perhaps the next most well-known work in the series.",
+        "index" : 3,
+        "photoURL" : "gs://cs65-museumtour.appspot.com/vangogh/sunflowers.jpg",
+        "year" : "1889"
+      },
+      "The Sheaf-Binder" : {
+        "artist" : "Vincent Van Gogh",
+        "color" : "#219653",
+        "description" : "‘The Sheaf-Binder’ is one of ten paintings Van Gogh created based upon a series of engravings based on country laborers by Jean-François Millet, painted during his stay in Saint-Rémy. Though this work was created late in his life, Van Gogh began his painting career with primarily genre paintings – depictions of ‘common folk’ going about their daily lives, at work and at leisure. His portraits and paintings like ‘The Potato Eaters’ were moderately well-received at the time; however, they were popularly considered dark and unappealing in comparison to the colorful Impressionist paintings that were in vogue in France at the time. Thus, at the encouragement of his brother Theo, Van Gogh devoted himself to the study of color theory, broadening his repertoire to include brighter colors and experimental pigments. This studying, alongside his interest in and copying of Japanese ukiyo-e prints, led into Van Gogh developing a color palette heavily dependent upon bright, contrasting colors. Thus, when Van Gogh was relegated to the asylum and found himself generally lacking in subjects for his portraits and figure studies, he turned to other artists’ agricultural depictions and genre works. Though connected in subject matter, ‘The Sheaf-Binder’ is in stark contrast in color theory (or lack thereof) and brushwork present in Van Gogh’s early works: making it an excellent piece of evidence in considering his development as an artist. ‘The Sheaf-Binder’ is also generally considered less personal than most of his works from the period, and many art historians have considered it likely that Van Gogh would turn to reproducing others’ works in an attempt to rein in his detachment from reality following mental breaks or other distressing events.",
+        "index" : 5,
+        "photoURL" : "gs://cs65-museumtour.appspot.com/vangogh/sheafbinder.jpg",
+        "year" : "1890"
+      },
+      "art" : true,
+      "index" : 1
+    }
+  }
+}
